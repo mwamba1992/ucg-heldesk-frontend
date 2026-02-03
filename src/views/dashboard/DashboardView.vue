@@ -23,7 +23,7 @@ const recentTickets = ref<Ticket[]>([]);
 
 const statusColors: Record<string, string> = {
   NEW: 'info',
-  ASSIGNED: 'purple',
+  ASSIGNED: 'cyan',
   IN_PROGRESS: 'warning',
   PENDING: 'amber',
   RESOLVED: 'success',
@@ -259,7 +259,7 @@ onMounted(fetchDashboardData);
 }
 
 .stat-card.gradient-primary {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #00a0d1 0%, #00b8e6 100%);
   color: white;
 }
 
@@ -274,7 +274,7 @@ onMounted(fetchDashboardData);
 }
 
 .stat-card.gradient-info {
-  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
   color: white;
 }
 
@@ -319,7 +319,7 @@ onMounted(fetchDashboardData);
 
 .ticket-number {
   font-weight: 600;
-  color: #6366f1;
+  color: #00a0d1;
 }
 
 .ticket-title {

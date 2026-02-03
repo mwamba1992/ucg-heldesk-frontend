@@ -200,7 +200,7 @@ function getUserInitials(name: string | undefined) {
 }
 
 .brand-avatar {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #00a0d1 0%, #00b8e6 100%);
 }
 
 .brand-text {
@@ -218,11 +218,11 @@ function getUserInitials(name: string | undefined) {
 }
 
 .nav-item.v-list-item--active {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(0, 160, 209, 0.1) 0%, rgba(0, 184, 230, 0.1) 100%);
 }
 
 .nav-item.v-list-item--active:deep(.v-icon) {
-  color: #6366f1;
+  color: #00a0d1;
   opacity: 1;
 }
 

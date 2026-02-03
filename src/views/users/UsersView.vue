@@ -39,10 +39,10 @@ const roleOptions = [
 ];
 
 const roleColors: Record<string, string> = {
-  REQUESTER: 'blue',
-  AGENT: 'green',
-  SUPERVISOR: 'purple',
-  ADMIN: 'red',
+  REQUESTER: 'info',
+  AGENT: 'success',
+  SUPERVISOR: 'teal',
+  ADMIN: 'error',
 };
 
 const statusOptions = [

@@ -48,38 +48,29 @@ async function handleLogin() {
 </script>
 
 <template>
-  <div class="login-container">
-    <div class="login-left">
-      <div class="brand">
-        <div class="brand-icon">
-          <v-icon size="48" color="white">mdi-headset</v-icon>
-        </div>
-        <h1 class="brand-title">MHB Help Desk</h1>
-        <p class="brand-subtitle">Your IT Support Portal</p>
-      </div>
-
-      <div class="features">
-        <div class="feature-item">
-          <v-icon color="white" class="mr-3">mdi-ticket-confirmation</v-icon>
-          <span>Track your support tickets</span>
-        </div>
-        <div class="feature-item">
-          <v-icon color="white" class="mr-3">mdi-clock-fast</v-icon>
-          <span>Get quick resolutions</span>
-        </div>
-        <div class="feature-item">
-          <v-icon color="white" class="mr-3">mdi-shield-check</v-icon>
-          <span>Secure & reliable support</span>
+  <div class="login-page">
+    <!-- Header -->
+    <header class="login-header">
+      <div class="header-content">
+        <div class="logo-section">
+          <div class="logo-icon">
+            <v-icon size="28" color="white">mdi-bank</v-icon>
+          </div>
+          <div class="logo-text">
+            <span class="bank-name">Mwanga Hakika Bank</span>
+          </div>
         </div>
       </div>
-    </div>
+    </header>
 
-    <div class="login-right">
-      <v-card class="login-card" elevation="0">
-        <v-card-text class="pa-8">
-          <div class="text-center mb-8">
-            <h2 class="text-h4 font-weight-bold mb-2">Welcome back</h2>
-            <p class="text-body-1 text-grey">Sign in to your account</p>
+    <!-- Main Content -->
+    <main class="login-main">
+      <div class="login-container">
+        <!-- Login Card -->
+        <div class="login-card">
+          <div class="card-header">
+            <h1 class="card-title">IT Help Desk</h1>
+            <p class="card-subtitle">Sign in to access your support portal</p>
           </div>
 
           <v-alert
@@ -87,181 +78,307 @@ async function handleLogin() {
             type="error"
             variant="tonal"
             class="mb-6"
-            rounded="lg"
+            density="compact"
             closable
             @click:close="errorMessage = ''"
           >
             {{ errorMessage }}
           </v-alert>
 
-          <v-form @submit.prevent="handleLogin">
-            <v-text-field
-              v-model="form.username"
-              label="Username"
-              prepend-inner-icon="mdi-account-outline"
-              type="text"
-              autocomplete="username"
-              :disabled="isLoading"
-              required
-              class="mb-4"
-            ></v-text-field>
+          <v-form @submit.prevent="handleLogin" class="login-form">
+            <div class="form-group">
+              <label class="form-label">Username</label>
+              <v-text-field
+                v-model="form.username"
+                placeholder="Enter your username"
+                prepend-inner-icon="mdi-account-outline"
+                type="text"
+                autocomplete="username"
+                :disabled="isLoading"
+                required
+                variant="outlined"
+                density="comfortable"
+                hide-details="auto"
+                class="form-input"
+              ></v-text-field>
+            </div>
 
-            <v-text-field
-              v-model="form.password"
-              label="Password"
-              prepend-inner-icon="mdi-lock-outline"
-              :append-inner-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
-              :type="showPassword ? 'text' : 'password'"
-              autocomplete="current-password"
-              :disabled="isLoading"
-              required
-              class="mb-6"
-              @click:append-inner="showPassword = !showPassword"
-            ></v-text-field>
+            <div class="form-group">
+              <label class="form-label">Password</label>
+              <v-text-field
+                v-model="form.password"
+                placeholder="Enter your password"
+                prepend-inner-icon="mdi-lock-outline"
+                :append-inner-icon="showPassword ? 'mdi-eye-off-outline' : 'mdi-eye-outline'"
+                :type="showPassword ? 'text' : 'password'"
+                autocomplete="current-password"
+                :disabled="isLoading"
+                required
+                variant="outlined"
+                density="comfortable"
+                hide-details="auto"
+                class="form-input"
+                @click:append-inner="showPassword = !showPassword"
+              ></v-text-field>
+            </div>
 
             <v-btn
               type="submit"
               color="primary"
-              size="x-large"
+              size="large"
               block
               :loading="isLoading"
               :disabled="!isFormValid"
-              class="mb-4 login-btn"
+              class="login-btn"
             >
-              <v-icon left class="mr-2">mdi-login</v-icon>
               Sign In
             </v-btn>
           </v-form>
 
-          <div class="text-center">
-            <p class="text-caption text-grey-darken-1">
-              Need help? Contact
-              <a href="#" class="text-primary text-decoration-none font-weight-medium">IT Support</a>
-            </p>
+          <div class="help-section">
+            <v-icon size="16" class="mr-1">mdi-help-circle-outline</v-icon>
+            <span>Having trouble? Contact <a href="mailto:itsupport@mhb.co.tz" class="help-link">IT Support</a></span>
           </div>
-        </v-card-text>
-      </v-card>
+        </div>
 
-      <p class="copyright">
-        &copy; {{ new Date().getFullYear() }} MHB Organization. All rights reserved.
-      </p>
-    </div>
+        <!-- Security Notice -->
+        <div class="security-notice">
+          <v-icon size="14" class="mr-1">mdi-shield-check</v-icon>
+          <span>Secure connection. Your session is encrypted.</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="login-footer">
+      <div class="footer-content">
+        <p class="copyright">&copy; {{ new Date().getFullYear() }} Mwanga Hakika Bank. All rights reserved.</p>
+        <p class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <span class="divider">|</span>
+          <a href="#">Terms of Service</a>
+        </p>
+      </div>
+    </footer>
   </div>
 </template>
 
 <style scoped>
-.login-container {
-  display: flex;
+.login-page {
   min-height: 100vh;
-}
-
-.login-left {
-  flex: 1;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  background: #f5f7fa;
+}
+
+/* Header */
+.login-header {
+  background: #00a0d1;
+  padding: 16px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo-section {
+  display: flex;
   align-items: center;
-  padding: 48px;
-  position: relative;
-  overflow: hidden;
+  gap: 12px;
 }
 
-.login-left::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-  animation: rotate 30s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.brand {
-  text-align: center;
-  z-index: 1;
-  margin-bottom: 48px;
-}
-
-.brand-icon {
-  width: 80px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 24px;
-  backdrop-filter: blur(10px);
 }
 
-.brand-title {
+.bank-name {
+  font-size: 1.25rem;
+  font-weight: 600;
   color: white;
-  font-size: 2.5rem;
+  letter-spacing: -0.01em;
+}
+
+/* Main */
+.login-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Card */
+.login-card {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e8ecf0;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.card-title {
+  font-size: 1.5rem;
   font-weight: 700;
+  color: #1a2b3c;
   margin-bottom: 8px;
 }
 
-.brand-subtitle {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.125rem;
+.card-subtitle {
+  font-size: 0.9rem;
+  color: #64748b;
 }
 
-.features {
-  z-index: 1;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.9);
-  padding: 12px 0;
-  font-size: 1rem;
-}
-
-.login-right {
-  flex: 1;
+/* Form */
+.login-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 48px;
-  background: #f8fafc;
+  gap: 20px;
 }
 
-.login-card {
-  width: 100%;
-  max-width: 440px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-input :deep(.v-field) {
+  border-radius: 8px;
+}
+
+.form-input :deep(.v-field__outline) {
+  color: #d1d5db;
+}
+
+.form-input :deep(.v-field--focused .v-field__outline) {
+  color: #00a0d1;
 }
 
 .login-btn {
-  height: 52px !important;
-  font-size: 1rem;
+  margin-top: 8px;
+  height: 48px !important;
+  font-size: 0.95rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  border-radius: 8px;
+}
+
+/* Help Section */
+.help-section {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e8ecf0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.help-link {
+  color: #00a0d1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.help-link:hover {
+  text-decoration: underline;
+}
+
+/* Security Notice */
+.security-notice {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Footer */
+.login-footer {
+  padding: 20px 24px;
+  background: white;
+  border-top: 1px solid #e8ecf0;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .copyright {
-  margin-top: 32px;
-  color: #94a3b8;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0;
 }
 
-@media (max-width: 960px) {
-  .login-left {
-    display: none;
+.footer-links {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.footer-links a {
+  color: #64748b;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #00a0d1;
+}
+
+.footer-links .divider {
+  margin: 0 8px;
+  color: #d1d5db;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 28px 24px;
   }
 
-  .login-right {
-    flex: 1;
+  .card-title {
+    font-size: 1.3rem;
+  }
+
+  .login-header {
+    padding: 12px 16px;
+  }
+
+  .bank-name {
+    font-size: 1.1rem;
   }
 }
 </style>

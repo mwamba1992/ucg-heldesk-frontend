@@ -38,13 +38,13 @@ const priorityOptions = [
 ];
 
 const statusColors: Record<string, string> = {
-  NEW: 'blue',
-  ASSIGNED: 'purple',
-  IN_PROGRESS: 'orange',
+  NEW: 'info',
+  ASSIGNED: 'cyan',
+  IN_PROGRESS: 'warning',
   PENDING: 'amber',
-  RESOLVED: 'green',
+  RESOLVED: 'success',
   CLOSED: 'grey',
-  CANCELLED: 'red',
+  CANCELLED: 'error',
 };
 
 const priorityColors: Record<string, string> = {
